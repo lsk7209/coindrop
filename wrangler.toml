@@ -1,8 +1,6 @@
 name = "coindrop-kr"
 compatibility_date = "2024-11-02"
-# ⚠️ pages_build_output_dir은 Cloudflare Pages Dashboard에서 설정하거나
-# pages.json 파일을 사용하세요 (pages.json이 우선순위가 높습니다)
-# pages_build_output_dir = ".next"
+pages_build_output_dir = ".next"
 
 # Cloudflare Pages Functions 설정
 # Next.js API Routes가 자동으로 Functions로 변환됨
