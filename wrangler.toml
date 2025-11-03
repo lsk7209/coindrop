@@ -6,10 +6,12 @@ pages_build_output_dir = ".next"
 # Next.js API Routes가 자동으로 Functions로 변환됨
 
 [env.production]
-routes = [
-  { pattern = "coindrop.kr", zone_name = "coindrop.kr" },
-  { pattern = "www.coindrop.kr", zone_name = "coindrop.kr" }
-]
+# ⚠️ 주의: Cloudflare Pages는 wrangler.toml에서 routes를 지원하지 않습니다
+# Custom Domain은 Cloudflare Dashboard → Pages → 프로젝트 → Custom domains에서 설정하세요
+# routes = [
+#   { pattern = "coindrop.kr", zone_name = "coindrop.kr" },
+#   { pattern = "www.coindrop.kr", zone_name = "coindrop.kr" }
+# ]
 
 # 프로덕션 환경 설정
 # ⚠️ 배포 전에 실제 리소스 ID를 입력해야 합니다
