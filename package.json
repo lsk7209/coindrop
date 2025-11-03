@@ -1,0 +1,47 @@
+{
+  "name": "coindrop-kr",
+  "version": "1.1.0",
+  "description": "코인 에어드랍 자동 수집·생성·발행 플랫폼",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "wrangler:dev": "wrangler pages dev",
+    "wrangler:deploy": "wrangler pages deploy",
+    "wrangler:deploy:consumer": "wrangler deploy --config wrangler.consumer.toml workers/consumer.ts",
+    "wrangler:deploy:collector": "wrangler deploy --config wrangler.collector.toml workers/collector.ts",
+    "wrangler:deploy:newsletter": "wrangler deploy --config wrangler.newsletter.toml workers/newsletter.ts",
+    "test:api": "tsx scripts/test-defillama-api.ts",
+    "collect:local": "tsx scripts/collect-local.ts",
+    "db:migrate": "wrangler d1 migrations apply coindrop-db",
+    "db:migrate:local": "wrangler d1 migrations apply coindrop-db --local",
+    "db:seed": "tsx scripts/seed.ts"
+  },
+  "dependencies": {
+    "next": "^14.2.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "zod": "^3.23.0",
+    "@cloudflare/workers-types": "^4.20241106.0",
+    "resend": "^3.2.0",
+    "openai": "^4.47.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.3.0",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "^14.2.0",
+    "wrangler": "^3.47.0",
+    "tsx": "^4.7.0",
+    "@sentry/nextjs": "^7.98.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+

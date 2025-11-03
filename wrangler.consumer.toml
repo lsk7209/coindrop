@@ -1,0 +1,41 @@
+# Queue Consumer Worker 전용 설정
+# 별도 Worker로 배포: wrangler deploy --config wrangler.consumer.toml workers/consumer.ts
+
+name = "coindrop-consumer"
+main = "workers/consumer.ts"
+compatibility_date = "2024-11-02"
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "coindrop-db"
+database_id = "" # 프로덕션 DB ID
+migrations_dir = "scripts/migrations"
+
+# R2 Bucket
+[[r2_buckets]]
+binding = "R2_CONTENTS"
+bucket_name = "coindrop-contents"
+
+# KV Namespaces
+[[kv_namespaces]]
+binding = "KV_CACHE"
+id = "" # 프로덕션 KV ID
+
+# Queues
+[[queues.consumers]]
+queue = "q.generate"
+max_batch_size = 10
+max_batch_timeout = 30
+
+# Variables
+[vars]
+BASE_URL = "https://coindrop.kr"
+
+# Secrets
+# wrangler secret put OPENAI_API_KEY
+# wrangler secret put MAKE_WEBHOOK_URL
+# wrangler secret put TELEGRAM_BOT_TOKEN
+# wrangler secret put TELEGRAM_CHAT_ID
+# wrangler secret put REVALIDATE_TOKEN
+

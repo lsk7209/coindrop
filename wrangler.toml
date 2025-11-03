@@ -1,0 +1,58 @@
+name = "coindrop-kr"
+compatibility_date = "2024-11-02"
+pages_build_output_dir = ".next"
+
+# Cloudflare Pages Functions 설정
+# Next.js API Routes가 자동으로 Functions로 변환됨
+
+[env.production]
+routes = [
+  { pattern = "coindrop.kr", zone_name = "coindrop.kr" },
+  { pattern = "www.coindrop.kr", zone_name = "coindrop.kr" }
+]
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "coindrop-db"
+database_id = "" # 실제 배포 시 생성 후 입력
+preview_database_id = "" # 로컬 개발용
+migrations_dir = "scripts/migrations"
+
+# R2 Bucket
+[[r2_buckets]]
+binding = "R2_CONTENTS"
+bucket_name = "coindrop-contents"
+
+[[r2_buckets]]
+binding = "R2_BACKUPS"
+bucket_name = "coindrop-backups"
+
+# KV Namespaces
+[[kv_namespaces]]
+binding = "KV_CACHE"
+id = "" # 실제 배포 시 생성 후 입력
+preview_id = "" # 로컬 개발용
+
+# Queues
+# Pages에서는 Queue Producer만 설정 가능
+# Consumer는 별도 Worker로 배포 필요
+[[queues.producers]]
+queue = "q.generate"
+binding = "q"  # Pages에서 Queue 바인딩 이름
+
+# Variables
+[vars]
+ENVIRONMENT = "production"
+SCHEMA_VERSION = "101"
+DEFAULT_CACHE_TTL_DETAIL = "600"
+DEFAULT_CACHE_TTL_LIST = "300"
+DEFAULT_CACHE_TTL_SITEMAP = "300"
+
+# Secrets (wrangler secret put로 설정)
+# OPENAI_API_KEY
+# RESEND_API_KEY
+# SENTRY_DSN
+# MAKE_WEBHOOK_URL
+# TELEGRAM_BOT_TOKEN
+# TELEGRAM_CHAT_ID

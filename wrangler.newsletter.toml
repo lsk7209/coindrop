@@ -1,0 +1,20 @@
+# Newsletter Worker 전용 설정
+# Cron Job으로 배포: wrangler deploy --config wrangler.newsletter.toml workers/newsletter.ts
+
+name = "coindrop-newsletter"
+main = "workers/newsletter.ts"
+compatibility_date = "2024-11-02"
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "coindrop-db"
+database_id = "" # 프로덕션 DB ID
+
+# Cron Trigger (매일 00:00 UTC = KST 09:00)
+[[triggers.crons]]
+cron = "0 0 * * *"
+
+# Secrets
+# wrangler secret put RESEND_API_KEY
+
