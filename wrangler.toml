@@ -35,10 +35,16 @@ bucket_name = "coindrop-backups"
 # KV Namespaces (프로덕션)
 # ⚠️ 주의: id가 빈 문자열이면 빌드 실패합니다
 # 배포 전에 반드시 KV Namespace를 생성하고 ID를 입력하세요
-[[env.production.kv_namespaces]]
-binding = "KV_CACHE"
-id = "" # ⚠️ 필수: 빈 문자열이면 안됩니다! KV Namespace ID 입력 필요
-preview_id = ""
+# 
+# Cloudflare Dashboard에서 KV Namespace 생성:
+# 1. Workers & Pages → KV → Create a namespace
+# 2. 이름: KV_CACHE
+# 3. 생성 후 ID를 아래 주석 해제하고 입력
+#
+# [[env.production.kv_namespaces]]
+# binding = "KV_CACHE"
+# id = "YOUR_KV_NAMESPACE_ID_HERE"  # ← 실제 KV Namespace ID 입력 필요
+# preview_id = ""
 
 # Queues (프로덕션)
 [[env.production.queues.producers]]
