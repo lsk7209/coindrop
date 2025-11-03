@@ -4,6 +4,8 @@ const nextConfig = {
   swcMinify: true,
   poweredByHeader: false,
   compress: true,
+  // Cloudflare Pages는 output: 'standalone'을 지원하지 않습니다
+  // output: 'standalone', // 제거됨 - Cloudflare Pages는 기본 .next 출력 사용
   images: {
     formats: ['image/webp', 'image/avif'],
     remotePatterns: [
