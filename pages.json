@@ -1,7 +1,6 @@
 {
   "buildCommand": "npm ci && npm run build",
   "buildOutputDirectory": ".next",
-  "nodeVersion": "18",
-  "installCommand": "npm ci"
+  "nodeVersion": "18"
 }
 
