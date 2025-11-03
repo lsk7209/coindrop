@@ -2,6 +2,20 @@
 
 코인 에어드랍 자동 수집·생성·발행 플랫폼
 
+## ⚠️ 배포 전 필수 설정
+
+**Cloudflare Pages 배포 시 반드시 Dashboard에서 빌드 설정을 해야 합니다:**
+
+1. Cloudflare Dashboard → Workers & Pages → Pages → 프로젝트
+2. Settings → Builds & deployments
+3. 설정:
+   - Build command: `npm ci && npm run build`
+   - Build output directory: `.next`
+   - Node.js version: `18`
+4. Save 후 재배포
+
+자세한 내용: `READ_THIS_FIRST.md` 참고
+
 ## 기술 스택
 
 - **Frontend**: Next.js 14 (App Router)
